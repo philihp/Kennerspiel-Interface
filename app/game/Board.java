@@ -1,15 +1,16 @@
 package game;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import game.Command;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 abstract public class Board {
 	
-	private List<Command> history = new ArrayList<Command>();
+	protected List<Command> history = new ArrayList<Command>();
 	
 	protected Random rng; 
 	
