@@ -10,3 +10,5 @@ libraryDependencies ++= Seq(
 )
 
 play.Project.playJavaSettings
+
+publishTo := Some(Resolver.file("file", new File("/srv/www/philihp.com/public_html/repo")))
