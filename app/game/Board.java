@@ -3,6 +3,8 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
+
 import game.Command;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,5 +62,14 @@ abstract public class Board {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * Return a set of active players. This should be their color or race or faction,
+	 * and not their username, because the game should have no knowledge of the user
+	 * database.
+	 * 
+	 * @return Set<String> list of players with actions pending.
+	 */
+	abstract public Set<String> getActivePlayer();
 	
 }
