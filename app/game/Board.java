@@ -11,8 +11,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 abstract public class Board {
+
+	private boolean canonized = false;
 	
 	protected List<Command> history = new ArrayList<Command>();
+	protected List<Command> preview = new ArrayList<Command>();
 	
 	protected Random rng; 
 	
@@ -27,7 +30,12 @@ abstract public class Board {
 	 * @throws GameError
 	 */
 	public void runCommand(Command command) throws GameError {
-		history.add(command);
+		if(canonized) {
+			preview.add(command);
+		}
+		else {
+			history.add(command);
+		}
 		command.execute();
 	}
 	
@@ -72,4 +80,15 @@ abstract public class Board {
 	 */
 	abstract public Set<String> getActivePlayer();
 	
+	public void markMovesCanon() {
+		canonized = true;
+	}
+	
+	public List<Command> getHistory() {
+		return history;
+	}
+	
+	public List<Command> getPreview() {
+		return preview;
+	}
 }
